@@ -5,8 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\DTOs\RegisterDTO;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\RegisterRequest;
-use App\Service\RegisterService;
-use Illuminate\Http\Request;
+use App\Service\Auth\RegisterService;
 use Illuminate\Support\Facades\Auth;
 
 class RegisterController extends Controller

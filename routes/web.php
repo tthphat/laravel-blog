@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use \App\Http\Controllers\Auth\RegisterController;
+use \App\Http\Controllers\Auth\LoginController;
+use \App\Http\Controllers\Auth\LogoutController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -9,16 +11,18 @@ Route::get('/', function () {
 
 // Auth routes - chỉ guest được truy cập
 Route::middleware('guest')->group(function() {
-   Route::get('/register', [RegisterController::class, 'create'])->name('register');
-   Route::post('/register', [RegisterController::class, 'store']);
+    // routes/web.php
+    Route::get('/login', [LoginController::class, 'create'])->name('login');
+    Route::post('/login', [LoginController::class, 'store'])->name('login.store'); // POST cũng có tên
 
-   Route::get('login');
-   Route::post('login');
+    Route::get('/register', [RegisterController::class, 'create'])->name('register');
+    Route::post('/register', [RegisterController::class, 'store'])->name('register.store');
+
 });
 
 // Auth routes - cần đăng nhập
 Route::middleware('auth')->group(function() {
-    Route::post('logout');
+    Route::post('/logout', [LogoutController::class, 'destroy'])->name('logout');
 });
 
 

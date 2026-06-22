@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Service;
+namespace App\Service\Auth;
 
 use App\DTOs\RegisterDTO;
 use App\Enums\UserRole;
