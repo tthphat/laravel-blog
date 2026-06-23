@@ -8,6 +8,7 @@ use Database\Factories\UserFactory;
 use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Attributes\Hidden;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
@@ -32,5 +33,9 @@ class User extends Authenticatable
             // Laravel sẽ tự động biến số 1, 2, 3 dưới DB thành Object UserRole tương ứng khi bạn gọi code
             'role' => UserRole::class,
         ];
+    }
+
+    public function posts(): HasMany {
+        return $this->hasMany(Post::class, 'author_id');
     }
 }
