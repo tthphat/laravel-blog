@@ -23,7 +23,7 @@ class LoginController extends Controller
         $dto = new LoginDTO(
             email: $request->validated('email'),
             password: $request->validated('password'),
-            remember: $request->validated('remember'),
+            remember: $request->boolean('remember', false),
         );
 
         $success = $this->loginService->execute($dto);
